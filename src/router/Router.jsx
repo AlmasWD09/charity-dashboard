@@ -5,6 +5,7 @@ import AdminDashboard from "../pages/dashboard/adminDashboard/AdminDashboard";
 import Contributors from "../pages/dashboard/adminDashboard/contributors/Contributors";
 import Volunteers from "../pages/dashboard/adminDashboard/volunteers/Volunteers";
 import Auction from "../pages/dashboard/adminDashboard/auction/Auction";
+import CommonDashboard from "../pages/dashboard/common/CommonDashboard";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
     path: "/admin/dashboard",
     element: <AdminDashboard />,
     children: [
+      {
+        index: true,
+        element: <CommonDashboard />,
+      },
       {
         path: "contributors",
         element: <Contributors />,

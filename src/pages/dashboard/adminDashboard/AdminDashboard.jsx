@@ -19,6 +19,11 @@ const AdminDashboard = () => {
 
   const menuItems = [
     {
+      key: "",
+      icon: <UserOutlined />,
+      label: "Dashboard",
+    },
+    {
       key: "contributors",
       icon: <UserOutlined />,
       label: "Contributors",
@@ -32,6 +37,36 @@ const AdminDashboard = () => {
       key: "auction",
       icon: <UploadOutlined />,
       label: "Auction",
+    },
+    {
+      key: "donation-transaction",
+      icon: <UploadOutlined />,
+      label: "Donation transaction",
+    },
+    {
+      key: "podcast-stories",
+      icon: <UploadOutlined />,
+      label: "Podcast & stories",
+    },
+    {
+      key: "subscribers",
+      icon: <UploadOutlined />,
+      label: "Subscribers",
+    },
+    {
+      key: "my-team",
+      icon: <UploadOutlined />,
+      label: "My team",
+    },
+    {
+      key: "faq",
+      icon: <UploadOutlined />,
+      label: "FAQs",
+    },
+    {
+      key: "settings",
+      icon: <UploadOutlined />,
+      label: "Settings",
     },
   ];
 
@@ -72,24 +107,37 @@ const AdminDashboard = () => {
           trigger={null}
           collapsible
           collapsed={collapsed}
-          className="w-[354px] h-screen fixed"
+          className="w-[354px] h-screen fixed flex flex-col justify-between"
         >
-          <div className="demo-logo-vertical " />
-          <Menu
-            style={{ backgroundColor: "#263234" }}
-            theme="dark"
-            mode="inline"
-            defaultSelectedKeys={["contributors"]}
-            items={menuItems}
-            onClick={handleMenuClick} // ✅ handle click
-          />
+          {/* Top part: Menu */}
+          <div>
+            <div className="demo-logo-vertical" />
+            <Menu
+              style={{ backgroundColor: "#263234" }}
+              theme="dark"
+              mode="inline"
+              defaultSelectedKeys={[""]}
+              items={menuItems}
+              onClick={handleMenuClick}
+            />
+          </div>
 
-          {/* custom collaps button */}
+          {/* Bottom part: Logout */}
+          <div className="p-4">
+            <button
+              className="w-full bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-all"
+              onClick={() => console.log("Logout clicked")}
+            >
+              Log out
+            </button>
+          </div>
+
+          {/* Custom collapse button */}
           <div
             style={{
               position: "absolute",
               top: "50%",
-              right: "-14px", // Fixed position to the right edge of sidebar
+              right: "-14px",
               transform: "translateY(-200%)",
               zIndex: 10,
             }}
