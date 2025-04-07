@@ -143,18 +143,6 @@ const AdminDashboard = () => {
                 </button>
               )}
             </div>
-            {/* <div className="px-4 py-4 mb-16">
-              <button className="w-full text-[#DA453F] hover:text-white px-4 py-2 rounded hover:bg-primary transition-all duration-200 flex items-center justify-start h-10">
-                <LogoutOutlined className="shrink-0" />
-                <p
-                  className={`transition-all duration-300 overflow-hidden whitespace-nowrap ${
-                    collapsed ? "opacity-0 w-0" : "opacity-100 pl-3 "
-                  }`}
-                >
-                  Log out
-                </p>
-              </button>
-            </div> */}
           </div>
 
           {/* Custom collapse button */}
