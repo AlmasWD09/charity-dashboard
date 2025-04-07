@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import {
+  LogoutOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
 } from "@ant-design/icons";
-import { Button, Layout, Menu, theme } from "antd";
+import { Button, Layout, Menu, theme, Tooltip } from "antd";
 import { Outlet, useNavigate } from "react-router-dom";
 const { Header, Sider, Content } = Layout;
 
@@ -109,27 +110,51 @@ const AdminDashboard = () => {
           collapsed={collapsed}
           className="w-[354px] h-screen fixed flex flex-col justify-between"
         >
-          {/* Top part: Menu */}
-          <div>
-            <div className="demo-logo-vertical" />
-            <Menu
-              style={{ backgroundColor: "#263234" }}
-              theme="dark"
-              mode="inline"
-              defaultSelectedKeys={[""]}
-              items={menuItems}
-              onClick={handleMenuClick}
-            />
-          </div>
+          {/* sidebar parant div */}
+          <div className="flex flex-col justify-between h-screen">
+            <div>
+              <Menu
+                style={{ backgroundColor: "#263234" }}
+                theme="dark"
+                mode="inline"
+                defaultSelectedKeys={[""]}
+                items={menuItems}
+                onClick={handleMenuClick}
+              />
+            </div>
+            {/* Bottom part: Logout */}
 
-          {/* Bottom part: Logout */}
-          <div className="p-4">
-            <button
-              className="w-full bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-all"
-              onClick={() => console.log("Logout clicked")}
-            >
-              Log out
-            </button>
+            <div className="px-4 py-4 mb-16">
+              {collapsed ? (
+                <Tooltip title="Log out" placement="right">
+                  <button className="w-full text-[#DA453F] hover:text-white px-4 py-2 rounded hover:bg-primary transition-all duration-200 flex items-center justify-start h-10">
+                    <LogoutOutlined className="shrink-0" />
+                    <p className="opacity-0 w-0 overflow-hidden transition-all duration-300">
+                      Log out
+                    </p>
+                  </button>
+                </Tooltip>
+              ) : (
+                <button className="w-full text-[#DA453F] hover:text-white px-4 py-2 rounded hover:bg-primary transition-all duration-200 flex items-center justify-start h-10">
+                  <LogoutOutlined className="shrink-0" />
+                  <p className="opacity-100 pl-3 transition-all duration-300 whitespace-nowrap">
+                    Log out
+                  </p>
+                </button>
+              )}
+            </div>
+            {/* <div className="px-4 py-4 mb-16">
+              <button className="w-full text-[#DA453F] hover:text-white px-4 py-2 rounded hover:bg-primary transition-all duration-200 flex items-center justify-start h-10">
+                <LogoutOutlined className="shrink-0" />
+                <p
+                  className={`transition-all duration-300 overflow-hidden whitespace-nowrap ${
+                    collapsed ? "opacity-0 w-0" : "opacity-100 pl-3 "
+                  }`}
+                >
+                  Log out
+                </p>
+              </button>
+            </div> */}
           </div>
 
           {/* Custom collapse button */}
